@@ -1,20 +1,36 @@
-
+import java.io.File;
 import java.util.List;
 
+import java.util.TreeMap;
+
 public class Search {
-    public static void searching(List findList,List directoryList){
-        int count = 0;
-        for (int i = 0; i < directoryList.size(); i++){
-            for (int j = 0; j < findList.size();j++){
+    private TreeMap<String, String> directoryList;
+    private List<String> findList;
+    Timer timer = new Timer();
 
-                if (directoryList.get(i).equals(findList.get(j))){
-                    count++;
+    private long searching(){
+        long foundCount = 0;
 
-                }
+        for (String query : findList) {
+            if (directoryList.containsKey(query)) {
+               foundCount++;
             }
+           // foundCount ++;
         }
-        System.out.printf("Found %d/500 entries.", count);
-        int time = (int) System.currentTimeMillis();
-        System.out.printf("Time taken:  %d ms.",time);
+         return foundCount;
+    }
+
+    public  void start() {
+        timer.start();
+        System.out.println("Start searching...");
+        directoryList = Files.addDir(new File("C:\\Users\\helen\\Phone Book (Java)\\directory.txt"));
+        findList = Files.addFind(new File("C:\\Users\\helen\\Phone Book (Java)\\find.txt"));
+        long findNumber = searching();
+        timer.stop();
+        System.out.println("Found " + findNumber + " / " + findList.size() +
+                " entries. Time taken: " + timer.getMins() + " min. " +
+                timer.getSecs() + " sec. " + timer.getMs() + " ms.");
     }
 }
+
+
