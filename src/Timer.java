@@ -1,3 +1,4 @@
+
 import java.util.concurrent.TimeUnit;
 
 public class Timer {
@@ -24,5 +25,4 @@ public class Timer {
     public long getMs() {
         return elapsed - getMins() * 60000L - getSecs() * 1000L;
     }
-
 }
