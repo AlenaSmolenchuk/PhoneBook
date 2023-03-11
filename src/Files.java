@@ -1,39 +1,39 @@
-
+import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.io.IOException;
+import java.util.*;
 
 class Files {
-    static Scanner sc;
-   public List addFind(File find) {
-        try {
-            sc = new Scanner(find);
-        } catch (FileNotFoundException e) {
-            System.out.println("No file found: " + find);
-        }
-       List<String> findList = new ArrayList<>(500);
-        while (sc.hasNext()) {
-            findList.add(sc.nextLine());
-        }
+
+   public static List<String> addFind(File find) {
+       List<String> findList = new ArrayList<>();
+       try (BufferedReader br = new BufferedReader(
+               new java.io.FileReader(find))) {
+           String line = null;
+           while ((line = br.readLine()) != null) {
+               findList.add(line.trim());
+           }
+       } catch (IOException e) {
+           e.printStackTrace();
+           System.out.println("No file found: " + find);
+       }
        return  findList;
    }
 
-   public List addDir(File directory) {
-        try {
-            sc = new Scanner(directory);
-        } catch (FileNotFoundException e) {
-            System.out.println("No file found: " + directory);
-        }
-        List<String> directoryList = new ArrayList<>(100000000);
-        while (sc.hasNext()) {
-            directoryList.add(sc.nextLine());
-        }
+   public static TreeMap<String,String> addDir(File directory) {
 
+       TreeMap<String,String> directoryList = new TreeMap<>();
+       try (BufferedReader br = new BufferedReader(
+               new java.io.FileReader(directory))) {
+           String line = null;
+           while ((line = br.readLine()) != null) {
+               String[] data = line.trim().split("(?<=\\d)");
+               directoryList.put(data[1], data[0]);
+           }
+       } catch (IOException e) {
+           e.printStackTrace();
+           System.out.println("No file found: " + directory);
+       }
        return  directoryList;
    }
 }
-
-
