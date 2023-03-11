@@ -1,39 +1,36 @@
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.IOException;
-import java.util.*;
+import java.util.List;
 
-class Files {
+import java.util.TreeMap;
 
-   public static List<String> addFind(File find) {
-       List<String> findList = new ArrayList<>();
-       try (BufferedReader br = new BufferedReader(
-               new java.io.FileReader(find))) {
-           String line = null;
-           while ((line = br.readLine()) != null) {
-               findList.add(line.trim());
-           }
-       } catch (IOException e) {
-           e.printStackTrace();
-           System.out.println("No file found: " + find);
-       }
-       return  findList;
-   }
+public class Search {
+    private TreeMap<String, String> directoryList;
+    private List<String> findList;
+    Timer timer = new Timer();
 
-   public static TreeMap<String,String> addDir(File directory) {
+    private long searching(){
+        long foundCount = 0;
 
-       TreeMap<String,String> directoryList = new TreeMap<>();
-       try (BufferedReader br = new BufferedReader(
-               new java.io.FileReader(directory))) {
-           String line = null;
-           while ((line = br.readLine()) != null) {
-               String[] data = line.trim().split("(?<=\\d)");
-               directoryList.put(data[1], data[0]);
-           }
-       } catch (IOException e) {
-           e.printStackTrace();
-           System.out.println("No file found: " + directory);
-       }
-       return  directoryList;
-   }
+        for (String query : findList) {
+            if (directoryList.containsKey(query)) {
+              // foundCount = count++;
+            }
+            foundCount ++;
+        }
+         return foundCount;
+    }
+
+    public  void start() {
+        timer.start();
+        System.out.println("Start searching...");
+        directoryList = Files.addDir(new File("C:\\Users\\helen\\Phone Book (Java)\\directory.txt"));
+        findList = Files.addFind(new File("C:\\Users\\helen\\Phone Book (Java)\\find.txt"));
+        long findNumber = searching();
+        timer.stop();
+        System.out.println("Found " + findNumber + " / " + findList.size() +
+                " entries. Time taken: " + timer.getMins() + " min. " +
+                timer.getSecs() + " sec. " + timer.getMs() + " ms.");
+    }
 }
+
+
