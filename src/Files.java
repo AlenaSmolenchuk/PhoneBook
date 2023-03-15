@@ -20,8 +20,7 @@ class Files {
    }
 
    public static TreeMap<String,String> addDir(File directory) {
-
-       TreeMap<String,String> directoryList = new TreeMap<>();
+      TreeMap<String,String> directoryList = new TreeMap<>();
        try (BufferedReader br = new BufferedReader(
                new java.io.FileReader(directory))) {
            String line = null;
