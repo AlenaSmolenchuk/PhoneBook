@@ -13,7 +13,6 @@ public class Search {
             if (directoryList.containsKey(found)) {
                foundCount++;
             }
-           // foundCount ++;
         }
          return foundCount;
     }
