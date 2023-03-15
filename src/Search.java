@@ -22,8 +22,8 @@ public class Search {
     public  void start() {
         timer.start();
         System.out.println("Start searching...");
-        directoryList = Files.addDir(new File("C:\\Users\\helen\\Phone Book (Java)\\directory.txt"));
-        findList = Files.addFind(new File("C:\\Users\\helen\\Phone Book (Java)\\find.txt"));
+        directoryList = Files.addDir(new File("directory.txt"));
+        findList = Files.addFind(new File("find.txt"));
         long findNumber = searching();
         timer.stop();
         System.out.println("Found " + findNumber + " / " + findList.size() +
