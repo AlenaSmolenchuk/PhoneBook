@@ -10,8 +10,8 @@ public class Search {
     private long searching(){
         long foundCount = 0;
 
-        for (String query : findList) {
-            if (directoryList.containsKey(query)) {
+        for (String found : findList) {
+            if (directoryList.containsKey(found)) {
                foundCount++;
             }
            // foundCount ++;
