@@ -1,4 +1,3 @@
-
 interface TimeTimer {
      void start();
 }
