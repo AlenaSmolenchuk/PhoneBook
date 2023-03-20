@@ -31,6 +31,4 @@ public class Timer {
     public long getMs() {
         return stopTime - getMins() * 60000L - getSecs() * 1000L;
     }
-
 }
-
