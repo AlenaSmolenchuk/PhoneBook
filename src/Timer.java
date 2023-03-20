@@ -1,27 +1,38 @@
+package phonebook;
+
 import java.util.concurrent.TimeUnit;
 
 public class Timer {
     private long startTime;
-    private long elapsed;
+    private long stopTime;
 
-    public void start() {
+    public long start() {
         startTime = System.currentTimeMillis();
+        return startTime;
     }
 
-    public void stop() {
-        elapsed = System.currentTimeMillis() - startTime;
+    public long stop() {
+        stopTime = System.currentTimeMillis() ;
+        return stopTime;
+    }
+
+    public long duration() {
+        long duration = startTime - stopTime;
+        return duration;
     }
 
     public long getMins() {
-        return TimeUnit.MILLISECONDS.toMinutes(elapsed);
+        return TimeUnit.MILLISECONDS.toMinutes(stopTime);
     }
 
     public long getSecs() {
-        long secs = elapsed - getMins() * 60000L;
+        long secs = stopTime - getMins() * 60000L;
         return TimeUnit.MILLISECONDS.toSeconds(secs);
     }
 
     public long getMs() {
-        return elapsed - getMins() * 60000L - getSecs() * 1000L;
+        return stopTime - getMins() * 60000L - getSecs() * 1000L;
     }
+
 }
+
