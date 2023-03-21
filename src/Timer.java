@@ -27,7 +27,7 @@ public class Timer {
         long secs = stopTime - getMins() * 60000L;
         return TimeUnit.MILLISECONDS.toSeconds(secs);
     }
-
+    
     public long getMs() {
         return stopTime - getMins() * 60000L - getSecs() * 1000L;
     }
