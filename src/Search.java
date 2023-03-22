@@ -1,55 +1,87 @@
-import java.io.File;
+package phonebook;
+
 import java.util.List;
-import java.util.TreeMap;
 
-public class Search implements TimeTimer {
-    private TreeMap<String, String> directoryList;
-    private List<String> findList;
-    Timer timer = new Timer();
+public class Search  {
+    Time time = new Time();
 
 
-    private long linSearching(){
-        long foundCount = 0;
-        for (String query : findList) {
-            if (directoryList.containsKey(query)) {
-                foundCount ++;
-                break;
+    void linearSearch(List<Person> directoryList, List<String> findList, boolean printResult) {
+        int count = 0;
+        int namesCount = findList.size();
+
+        time.startSearch();
+
+        for (String findStr : findList) {
+            for (Person person : directoryList) {
+                if (person.getName().equals(findStr)) {
+                    //count  ++;
+                   // break;
+                }
             }
+            count ++;
         }
-         return foundCount;
+
+
+        time.endSearchTime();
+        time.setLinearSearchTime();
+        time.printFoundEntries(count, namesCount);
+        if (printResult) {
+            time.printLinearSearchTime();
+        }
+
     }
 
-    private boolean bubbleSort(){
-        long startSearch = timer.start();
+    protected void jumpSearch(List<Person> directoryList, List<String> findList) {
+        int count = 0;
+        time.startSearch();
+
         for (int i = 0; i < findList.size(); i++) {
-           for (int j = 0; j < findList.size() - i - 1; j++) {
-                if (findList.get(j).compareTo(findList.get(j + 1)) > 0) {
-                    String temp = findList.get(j);
-                    findList.set(j, findList.get(j + 1));
-                    findList.set(j + 1, temp);
+            String element = findList.get(i);
+            int blockSize = (int) Math.floor(Math.sqrt(directoryList.size()));
+            int currentLastIndex = blockSize - 1;
+            while (currentLastIndex < directoryList.size()
+                    && element.compareTo(directoryList.get(currentLastIndex).getName()) > 0) {
+                currentLastIndex += blockSize;
+            }
+            for (int currentSearchIndex = currentLastIndex - blockSize + 1;
+                 currentSearchIndex <= currentLastIndex
+                 && currentSearchIndex < directoryList.size();
+                 currentSearchIndex++) {
+                if (directoryList.get(currentSearchIndex).getName().equals(element)) {
+                    count++;
+                    break;
                 }
             }
         }
-        return true;
+
+        time.endSearchTime();
+        time.printFoundEntries(count, findList.size());
+        time.printAllTime();
+        time.printSortingTime();
+        time.printSearchingTime();
+
     }
 
+}
 
 
-    @Override
-    public void start() {
-        timer.start();
+
+
+
+
+   /* public void start() {
+
         System.out.println("Start searching (linear search)...");
-        directoryList = Files.addDir(new File("C:\\Users\\helen\\Phone Book (Java)\\directory.txt"));
-        findList = Files.addFind(new File("C:\\Users\\helen\\Phone Book (Java)\\find.txt"));
+        this.directoryList = Files.addDir(new File("C:\\Users\\helen\\Phone Book (Java)\\directory.txt"));
+        this.findList = Files.addFind(new File("C:\\Users\\helen\\Phone Book (Java)\\find.txt"));
         long findNumber = linSearching();
-        timer.stop();
-        timer.duration();
-        System.out.println("Found " + findNumber + " / " + findList.size() +
-                " entries. Time taken: " + timer.getMins() + " min. " +
-                timer.getSecs() + " sec. " + timer.getMs() + " ms.");
+
 
     }
 }
 
 
+
+    */
 
