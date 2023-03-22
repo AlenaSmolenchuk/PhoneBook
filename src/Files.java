@@ -18,7 +18,8 @@ class Files {
        }
      return  findList;
    }
-
+ 
+    
    static List<Person> addDir(File directory) {
        List<Person> directoryList = new ArrayList<>();
        try (BufferedReader br = new BufferedReader(
@@ -36,5 +37,3 @@ class Files {
      return  directoryList;
    }
 }
-
-
