@@ -1,10 +1,7 @@
-package phonebook;
-
 import java.util.List;
 
 public class Search  {
     Time time = new Time();
-
 
     void linearSearch(List<Person> directoryList, List<String> findList, boolean printResult) {
         int count = 0;
@@ -15,14 +12,11 @@ public class Search  {
         for (String findStr : findList) {
             for (Person person : directoryList) {
                 if (person.getName().equals(findStr)) {
-                    //count  ++;
-                   // break;
+                    count  ++;
+                    break;
                 }
             }
-            count ++;
         }
-
-
         time.endSearchTime();
         time.setLinearSearchTime();
         time.printFoundEntries(count, namesCount);
@@ -64,24 +58,3 @@ public class Search  {
     }
 
 }
-
-
-
-
-
-
-   /* public void start() {
-
-        System.out.println("Start searching (linear search)...");
-        this.directoryList = Files.addDir(new File("C:\\Users\\helen\\Phone Book (Java)\\directory.txt"));
-        this.findList = Files.addFind(new File("C:\\Users\\helen\\Phone Book (Java)\\find.txt"));
-        long findNumber = linSearching();
-
-
-    }
-}
-
-
-
-    */
-
