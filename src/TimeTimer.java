@@ -1,3 +1,0 @@
-interface TimeTimer {
-     void start();
-}
