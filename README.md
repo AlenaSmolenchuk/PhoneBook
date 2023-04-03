@@ -18,3 +18,6 @@ After sorting, search for 500 phone numbers using the list from the previous sta
 If the sorting process takes too long (more than 10 times longer than all 500 iterations of the linear search), you should stop sorting and use the linear search.
 
 Output both approaches one after another and see which one is faster.
+
+
+ # Stage 3/4: Need for speed
