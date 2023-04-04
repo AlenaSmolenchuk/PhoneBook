@@ -22,3 +22,8 @@ Output both approaches one after another and see which one is faster.
 
  # Stage 3/4: Need for speed
 
+Like in the previous stage, you should first sort the list of phone numbers by the owner’s name and then search for the numbers of the 500 people from the list given in the first stage. Remember: to get decent and comparable results, you should put all the algorithms in the same initial conditions.
+
+For sorting, use the quick sort algorithm, and for searching, the binary search algorithm.
+
+Output all three approaches one after another and see which one is faster.
