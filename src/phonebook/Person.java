@@ -1,4 +1,6 @@
-public class Person {
+package phonebook;
+
+public class Person implements Comparable<Person> {
     private String name;
     private String number;
 
@@ -30,4 +32,10 @@ public class Person {
                 ", number='" + number + '\'' +
                 '}';
     }
+
+    @Override
+    public int compareTo(Person p){
+        return name.length()-p.getName().length();
+    }
+
 }
