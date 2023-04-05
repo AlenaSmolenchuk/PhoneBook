@@ -1,3 +1,5 @@
+package phonebook;
+
 import java.time.Duration;
 
 public class Time {
@@ -104,3 +106,4 @@ public class Time {
         System.out.printf("Found %d / %d entries. ", count, namesCount);
     }
 }
+
