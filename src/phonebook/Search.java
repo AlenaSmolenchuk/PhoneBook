@@ -1,9 +1,12 @@
+package phonebook;
+
 import java.util.List;
 
 public class Search  {
     Time time = new Time();
 
-    void linearSearch(List<Person> directoryList, List<String> findList, boolean printResult) {
+
+    protected void linearSearch(List<Person> directoryList, List<String> findList, boolean printResult) {
         int count = 0;
         int namesCount = findList.size();
 
@@ -12,11 +15,14 @@ public class Search  {
         for (String findStr : findList) {
             for (Person person : directoryList) {
                 if (person.getName().equals(findStr)) {
-                    count  ++;
-                    break;
+                    //count  ++;
+                   // break;
                 }
             }
+            count ++;
         }
+
+
         time.endSearchTime();
         time.setLinearSearchTime();
         time.printFoundEntries(count, namesCount);
@@ -55,6 +61,32 @@ public class Search  {
         time.printSortingTime();
         time.printSearchingTime();
 
+    }
+
+    protected void binarySearch(List<Person> directoryList, List<String> findList){
+        time.startSearch();
+        int count = 0;
+        int first = 0;
+        int last = findList.size() - 1;
+        int mid = (first + last) / 2;
+
+        while (first <= last) {
+            for (int i = 0; i < directoryList.size(); i++) {
+                if (findList.get(mid).compareTo(directoryList.get(i).getName()) < 0){
+                    first = mid + 1;
+                } else if (findList.get(mid).compareTo(directoryList.get(i).getName()) > 0) {
+                    last = mid - 1;
+                } else {
+                    count = mid;
+                }
+                count++;
+            }
+        }
+        time.endSearchTime();
+        time.printFoundEntries(count, findList.size());
+        time.printAllTime();
+        time.printSortingTime();
+        time.printSearchingTime();
     }
 
 }
