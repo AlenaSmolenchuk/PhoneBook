@@ -63,30 +63,34 @@ public class Search  {
 
     }
 
-    protected void binarySearch(List<Person> directoryList, List<String> findList){
+        protected void binarySearch(List<Person> directoryList, List<String> findList){
         time.startSearch();
         int count = 0;
-        int first = 0;
-        int last = findList.size() - 1;
-        int mid = (first + last) / 2;
+        int firstIndex = 0;
+        int lastIndex = directoryList.size() - 1;
 
-        while (first <= last) {
-            for (int i = 0; i < directoryList.size(); i++) {
-                if (findList.get(mid).compareTo(directoryList.get(i).getName()) < 0){
-                    first = mid + 1;
-                } else if (findList.get(mid).compareTo(directoryList.get(i).getName()) > 0) {
-                    last = mid - 1;
-                } else {
-                    count = mid;
+
+        for(int j = 0; j < findList.size(); j++){
+            while (firstIndex <= lastIndex){
+                int middleIndex = (firstIndex + lastIndex)/2;
+                if(directoryList.get(middleIndex).getName()
+                        .equals(findList.get(j))){
+                    //  count ++;
+                } else if (directoryList.get(middleIndex).getName()
+                        .compareTo(findList.get(j)) < 0){
+                        firstIndex = middleIndex + 1;
+                } else if (directoryList.get(middleIndex).getName()
+                        .compareTo(findList.get(j)) > 0){
+                        lastIndex = middleIndex - 1;
                 }
-                count++;
             }
+            count ++;
         }
         time.endSearchTime();
         time.printFoundEntries(count, findList.size());
         time.printAllTime();
         time.printSortingTime();
         time.printSearchingTime();
-    }
 
+    }
 }
