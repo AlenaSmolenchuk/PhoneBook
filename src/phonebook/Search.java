@@ -73,7 +73,7 @@ public class Search  {
                 int middleIndex = (firstIndex + lastIndex)/2;
                 if(directoryList.get(middleIndex).getName()
                         .equals(findList.get(j))){
-                    //  count ++;
+                        count ++;
                 } else if (directoryList.get(middleIndex).getName()
                         .compareTo(findList.get(j)) < 0){
                         firstIndex = middleIndex + 1;
@@ -82,7 +82,6 @@ public class Search  {
                         lastIndex = middleIndex - 1;
                 }
             }
-            count ++;
         }
         time.endSearchTime();
         time.printFoundEntries(count, findList.size());
