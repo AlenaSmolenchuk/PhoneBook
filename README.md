@@ -32,3 +32,8 @@ Output all three approaches one after another and see which one is faster.
 
 # Stage 4/4: Instant search
 
+In the previous stage, you prepared the data using an algorithm with a complexity of O(n log n) and found the data using an algorithm with a complexity of O(log n). At this stage, you will implement faster data preparation and a faster search. The preparation will have a complexity of O(n), and the search will have a complexity of O(1). A hash table will help you with this.
+
+You need to add all the elements to the hash table and then find the necessary phone numbers, as in the previous stages. Since the hash table is filled once, you need to measure the hash table creation time separately (just like you did with sorting in the previous stage).
+
+Output all four approaches one after another and see which one is faster.
