@@ -28,3 +28,7 @@ Like in the previous stage, you should first sort the list of phone numbers by t
 For sorting, use the quick sort algorithm, and for searching, the binary search algorithm.
 
 Output all three approaches one after another and see which one is faster.
+
+
+# Stage 4/4: Instant search
+
