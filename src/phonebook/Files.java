@@ -7,7 +7,8 @@ import java.util.*;
 
 class Files {
 
-    static List<String> addFind(File find) {
+
+    protected static List<String> addFind(File find) {
         List<String> findList = new ArrayList<>();
        try (BufferedReader br = new BufferedReader(
                new java.io.FileReader(find))) {
@@ -22,7 +23,7 @@ class Files {
      return  findList;
    }
 
-   static List<Person> addDir(File directory) {
+   protected static List<Person> addDir(File directory) {
        List<Person> directoryList = new ArrayList<>();
        try (BufferedReader br = new BufferedReader(
                new java.io.FileReader(directory))) {
@@ -37,5 +38,16 @@ class Files {
            System.out.println("No file found: " + directory);
        }
      return  directoryList;
+   }
+
+       protected static Hashtable<String,String> toHash(List<Person> directoryList){
+        Time time = new Time();
+        time.startCreating();
+        Hashtable<String,String> directoryTable = new Hashtable(directoryList.size()*9);
+        for(Person p : directoryList){
+            directoryTable.put(String.valueOf(Math.abs(p.getName().hashCode())),p.getNumber());
+        }
+        time.endCreating();
+        return directoryTable;
    }
 }
