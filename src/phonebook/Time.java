@@ -7,6 +7,8 @@ public class Time {
     private static long endSearchingTime;
     private static long startSortingTime;
     private static long endSortingTime;
+    private static long startCreatingTime;
+    private static long endCreatingTime;
     private static long allTime;
     private static long linearSearchTime;
     private Duration duration;
@@ -36,6 +38,20 @@ public class Time {
     void endSorting() {
         endSortingTime = System.currentTimeMillis();
 
+    }
+
+    void startCreating() {
+        startCreatingTime = System.currentTimeMillis();
+
+    }
+
+    void endCreating() {
+        endCreatingTime = System.currentTimeMillis();
+
+    }
+
+    long getAllCreatingTime() {
+        return endCreatingTime - startCreatingTime;
     }
 
     long currentSortingTime() {
@@ -105,5 +121,20 @@ public class Time {
     void printFoundEntries(int count, int namesCount) {
         System.out.printf("Found %d / %d entries. ", count, namesCount);
     }
-}
 
+    void printCreating(){
+        duration = Duration.ofMillis(endCreatingTime - startCreatingTime);
+        seconds = duration.toSecondsPart();
+        minutes = duration.toMinutesPart();
+        milliseconds = duration.toMillisPart();
+        System.out.printf("Creating time: %d min. %d sec. %d ms.", minutes, seconds, milliseconds);
+    }
+
+    void printCreatingAndSearchTime(){
+        duration = Duration.ofMillis(getAllCreatingTime() + getAllSearchingTime());
+        seconds = duration.toSecondsPart();
+        minutes = duration.toMinutesPart();
+        milliseconds = duration.toMillisPart();
+        System.out.printf("Time taken: %d min. %d sec. %d ms.\n", minutes, seconds, milliseconds);
+    }
+}
