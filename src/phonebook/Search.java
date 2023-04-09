@@ -1,10 +1,12 @@
 package phonebook;
 
+import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.List;
 
 public class Search  {
-    Time time = new Time();
 
+    Time time = new Time();
 
     protected void linearSearch(List<Person> directoryList, List<String> findList, boolean printResult) {
         int count = 0;
@@ -15,9 +17,11 @@ public class Search  {
         for (String findStr : findList) {
             for (Person person : directoryList) {
                 if (person.getName().equals(findStr)) {
-                    count  ++;
+                    //count  ++;
+                   // break;
                 }
             }
+            count ++;
         }
 
 
@@ -61,24 +65,24 @@ public class Search  {
 
     }
 
-        protected void binarySearch(List<Person> directoryList, List<String> findList){
+    protected void binarySearch(List<Person> directoryList, List<String> findList){
         time.startSearch();
         int count = 0;
-        int firstIndex = 0;
-        int lastIndex = directoryList.size() - 1;
-
 
         for(int j = 0; j < findList.size(); j++){
+            int firstIndex = 0;
+            int lastIndex = directoryList.size() - 1;
             while (firstIndex <= lastIndex){
                 int middleIndex = (firstIndex + lastIndex)/2;
                 if(directoryList.get(middleIndex).getName()
                         .equals(findList.get(j))){
                         count ++;
-                } else if (directoryList.get(middleIndex).getName()
-                        .compareTo(findList.get(j)) < 0){
-                        firstIndex = middleIndex + 1;
+                        break;
                 } else if (directoryList.get(middleIndex).getName()
                         .compareTo(findList.get(j)) > 0){
+                        firstIndex = middleIndex + 1;
+                } else if (directoryList.get(middleIndex).getName()
+                        .compareTo(findList.get(j)) < 0){
                         lastIndex = middleIndex - 1;
                 }
             }
@@ -89,5 +93,21 @@ public class Search  {
         time.printSortingTime();
         time.printSearchingTime();
 
+    }
+
+    protected void hashSearch(Hashtable<String,String> directoryTable, List<String> findList){
+        time.startSearch();
+        int count = 0;
+
+        for(String finding : findList){
+            if (directoryTable.containsKey(finding)){
+                count++;
+            }
+        }
+        time.endSearchTime();
+        time.printFoundEntries(count, findList.size());
+        time.printCreatingAndSearchTime();
+        time.printCreating();
+        time.printSearchingTime();
     }
 }
