@@ -13,7 +13,7 @@ public class Start {
     Sort sort = new Sort();
 
     public void start() {
-        directoryList = Files.addDir(new File("directory.txt"));
+        directoryList = Files.addDir(new File("data/directory.txt"));
         findList = Files.addFind(new File("find.txt"));
 
         System.out.println("Start searching (linear search)...");
