@@ -6,8 +6,7 @@ import java.io.IOException;
 import java.util.*;
 
 class Files {
-
-
+    
     protected static List<String> addFind(File find) {
         List<String> findList = new ArrayList<>();
        try (BufferedReader br = new BufferedReader(
