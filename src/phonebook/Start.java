@@ -14,7 +14,7 @@ public class Start {
 
     public void start() {
         directoryList = Files.addDir(new File("data/directory.txt"));
-        findList = Files.addFind(new File("find.txt"));
+        findList = Files.addFind(new File("data/find.txt"));
 
         System.out.println("Start searching (linear search)...");
         search.linearSearch(directoryList, findList, true);
