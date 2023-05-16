@@ -62,7 +62,6 @@ public class Time {
         return endSortingTime - startSortingTime;
     }
 
-
     public void setAllTime() {
         allTime = getAllSortingTime() + getAllSearchingTime();
     }
@@ -116,7 +115,6 @@ public class Time {
         milliseconds = duration.toMillisPart();
         System.out.printf("Time taken: %d min. %d sec. %d ms.\n", minutes, seconds, milliseconds);
     }
-
 
     void printFoundEntries(int count, int namesCount) {
         System.out.printf("Found %d / %d entries. ", count, namesCount);
