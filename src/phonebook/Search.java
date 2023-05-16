@@ -17,11 +17,10 @@ public class Search  {
         for (String findStr : findList) {
             for (Person person : directoryList) {
                 if (person.getName().equals(findStr)) {
-                    //count  ++;
-                   // break;
+                    count  ++;
+                    break;
                 }
             }
-            count ++;
         }
 
 
