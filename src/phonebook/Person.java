@@ -37,5 +37,4 @@ public class Person implements Comparable<Person> {
     public int compareTo(Person p){
         return name.length()-p.getName().length();
     }
-
 }
