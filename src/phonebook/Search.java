@@ -30,7 +30,6 @@ public class Search  {
         if (printResult) {
             time.printLinearSearchTime();
         }
-
     }
 
     protected void jumpSearch(List<Person> directoryList, List<String> findList) {
