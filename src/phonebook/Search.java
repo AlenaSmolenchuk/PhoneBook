@@ -22,8 +22,6 @@ public class Search  {
                 }
             }
         }
-
-
         time.endSearchTime();
         time.setLinearSearchTime();
         time.printFoundEntries(count, namesCount);
@@ -54,13 +52,11 @@ public class Search  {
                 }
             }
         }
-
         time.endSearchTime();
         time.printFoundEntries(count, findList.size());
         time.printAllTime();
         time.printSortingTime();
         time.printSearchingTime();
-
     }
 
     protected void binarySearch(List<Person> directoryList, List<String> findList){
@@ -90,7 +86,6 @@ public class Search  {
         time.printAllTime();
         time.printSortingTime();
         time.printSearchingTime();
-
     }
 
     protected void hashSearch(Hashtable<String,String> directoryTable, List<String> findList){
