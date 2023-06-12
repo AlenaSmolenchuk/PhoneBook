@@ -8,35 +8,50 @@ import java.util.*;
 class Files {
     
     protected static List<String> addFind(File find) {
+        
         List<String> findList = new ArrayList<>();
-       try (BufferedReader br = new BufferedReader(
+       
+        try (BufferedReader br = new BufferedReader(
                new java.io.FileReader(find))) {
+            
            String line = null;
-           while ((line = br.readLine()) != null) {
+           
+            while ((line = br.readLine()) != null) {
                findList.add(line.trim());
-           }
+            }
        } catch (IOException e) {
            e.printStackTrace();
-           System.out.println("No file found: " + find);
-       }
-     return  findList;
+          
+            System.out.println("No file found: " + find);
+       
+        }
+    
+        return  findList;
    }
 
    protected static List<Person> addDir(File directory) {
+       
        List<Person> directoryList = new ArrayList<>();
+      
        try (BufferedReader br = new BufferedReader(
                new java.io.FileReader(directory))) {
+           
            String line = null;
+           
            while ((line = br.readLine()) != null) {
                String number = String.valueOf(br.read());
                String name = br.readLine();
                directoryList.add(new Person(name.trim(), number));
+          
            }
        } catch (IOException e) {
+          
            e.printStackTrace();
            System.out.println("No file found: " + directory);
        }
-     return  directoryList;
+   
+       return  directoryList;
+   
    }
 
        protected static Hashtable<String,String> toHash(List<Person> directoryList){
