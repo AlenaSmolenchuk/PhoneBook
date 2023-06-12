@@ -3,6 +3,7 @@ package phonebook;
 import java.time.Duration;
 
 public class Time {
+    
     private static long startSearchingTime;
     private static long endSearchingTime;
     private static long startSortingTime;
