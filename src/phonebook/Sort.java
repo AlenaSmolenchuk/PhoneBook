@@ -5,6 +5,7 @@ import java.util.Hashtable;
 import java.util.List;
 
 public class Start {
+   
     private List<Person> directoryList;
     private List<String> findList;
     private Hashtable<String,String> directoryTable;
@@ -13,6 +14,7 @@ public class Start {
     Sort sort = new Sort();
 
     public void start() {
+       
         directoryList = Files.addDir(new File("directory.txt"));
         findList = Files.addFind(new File("find.txt"));
 
