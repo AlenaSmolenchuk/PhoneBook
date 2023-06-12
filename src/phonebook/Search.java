@@ -9,6 +9,7 @@ public class Search  {
     Time time = new Time();
 
     protected void linearSearch(List<Person> directoryList, List<String> findList, boolean printResult) {
+       
         int count = 0;
         int namesCount = findList.size();
 
@@ -31,6 +32,7 @@ public class Search  {
     }
 
     protected void jumpSearch(List<Person> directoryList, List<String> findList) {
+       
         int count = 0;
         time.startSearch();
 
@@ -60,6 +62,7 @@ public class Search  {
     }
 
     protected void binarySearch(List<Person> directoryList, List<String> findList){
+       
         time.startSearch();
         int count = 0;
 
@@ -89,6 +92,7 @@ public class Search  {
     }
 
     protected void hashSearch(Hashtable<String,String> directoryTable, List<String> findList){
+       
         time.startSearch();
         int count = 0;
 
