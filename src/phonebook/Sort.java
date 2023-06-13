@@ -9,7 +9,9 @@ public class Sort {
     Search search = new Search();
 
     protected List<Person> bubbleSort(List<Person> directoryList, List<String> findList) {
+        
         time.startSorting();
+        
         for (int i = 0; i < directoryList.size() - 1; i++) {
             for (int j = 0; j < directoryList.size() - i - 1; j++) {
                 if (time.currentSortingTime() > time.getLinearSearchTime() * 10) {
@@ -30,7 +32,9 @@ public class Sort {
                 }
             }
         }
+        
         time.endSorting();
+        
         return directoryList;
     }
 
