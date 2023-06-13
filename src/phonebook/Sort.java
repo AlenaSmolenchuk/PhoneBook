@@ -39,10 +39,13 @@ public class Sort {
     }
 
     protected List<Person> quickSort(List<Person> directoryList) {
+        
         time.startSorting();
+        
         if(directoryList.isEmpty()){
             return directoryList;
         }
+        
         int pivot = directoryList.size() / 2;
 
         List<Person> sorted;
@@ -66,7 +69,9 @@ public class Sort {
         lesser.add(piv);
         lesser.addAll(greater);
         sorted = lesser;
+        
         time.endSorting();
+        
         return sorted;
     }
 }
