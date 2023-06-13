@@ -111,10 +111,12 @@ public class Search  {
                 count++;
             }
         }
+        
         time.endSearchTime();
         time.printFoundEntries(count, findList.size());
         time.printCreatingAndSearchTime();
         time.printCreating();
         time.printSearchingTime();
+    
     }
 }
