@@ -23,9 +23,11 @@ public class Search  {
                 }
             }
         }
+        
         time.endSearchTime();
         time.setLinearSearchTime();
         time.printFoundEntries(count, namesCount);
+       
         if (printResult) {
             time.printLinearSearchTime();
         }
@@ -40,10 +42,12 @@ public class Search  {
             String element = findList.get(i);
             int blockSize = (int) Math.floor(Math.sqrt(directoryList.size()));
             int currentLastIndex = blockSize - 1;
+            
             while (currentLastIndex < directoryList.size()
                     && element.compareTo(directoryList.get(currentLastIndex).getName()) > 0) {
                 currentLastIndex += blockSize;
             }
+            
             for (int currentSearchIndex = currentLastIndex - blockSize + 1;
                  currentSearchIndex <= currentLastIndex
                  && currentSearchIndex < directoryList.size();
@@ -54,6 +58,7 @@ public class Search  {
                 }
             }
         }
+        
         time.endSearchTime();
         time.printFoundEntries(count, findList.size());
         time.printAllTime();
@@ -69,21 +74,26 @@ public class Search  {
         for(int j = 0; j < findList.size(); j++){
             int firstIndex = 0;
             int lastIndex = directoryList.size() - 1;
+           
             while (firstIndex <= lastIndex){
                 int middleIndex = (firstIndex + lastIndex)/2;
+                
                 if(directoryList.get(middleIndex).getName()
                         .equals(findList.get(j))){
                         count ++;
                         break;
+               
                 } else if (directoryList.get(middleIndex).getName()
                         .compareTo(findList.get(j)) > 0){
                         firstIndex = middleIndex + 1;
+               
                 } else if (directoryList.get(middleIndex).getName()
                         .compareTo(findList.get(j)) < 0){
                         lastIndex = middleIndex - 1;
                 }
             }
         }
+       
         time.endSearchTime();
         time.printFoundEntries(count, findList.size());
         time.printAllTime();
